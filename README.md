@@ -1,1 +1,2 @@
-# For Problem Solving 
+# algorithm Repo 
+for problem solving 
