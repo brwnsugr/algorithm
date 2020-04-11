@@ -10,11 +10,11 @@ void quick_sort(vector<int>& a, int left, int right){
     int high = right;
     
     while(low <= high){
-        while(a[low] < pivot) low++;
-        while(a[high] > pivot) high--;
+        while(a[low] <= pivot && low <= right) low++;
+        while(a[high] >= pivot && high >= left + 1) high--;
         if(low <= high) swap(a[low], a[high]);
     }
-    swap(a[left], a[high]);
+    swap(a[left], a[high]); 
     quick_sort(a,left, high-1);
     quick_sort(a, high+1, right);
 }
