@@ -67,3 +67,22 @@ void printCur(List *plist){
         printf("Current Node Doesn't exist!");
     }
 }
+
+void SetSortRule(List *plist, int(*comp)(LData  d1, LData d2)){
+    plist->comp = comp; // plist의 구조체의 함수에 등록합니다.
+}
+
+void SInsert(List *plist, LData data){
+    Node *newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = data;
+    Node *pred = plist->head; //pred는 더미 노드를 가리킴
+    
+    while(pred->next != NULL && plist->comp(data, pred->next->data)!= 0){
+        pred = pred->next;
+    }
+    
+    newNode->next = pred->next; //newNode 의 오른쪽을 연결
+    pred->next = newNode;
+    
+    (plist->NumOfData)++;
+}
