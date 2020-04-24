@@ -39,7 +39,9 @@ void LRemove(List *plist); // List 의 포인터 변수를 인자로 받아서..
 
 void printCur(List *plist); // 현재를 가리키는 노드의 값을 출력해줍니다.
 
+void SetSortRule(List *plist, int(*comp)(LData d1, LData d2)); // 연결 리스트의 정렬 기준이 되는 함수 comp의 포인터를 인자로 넣어서 비교 함수를 등록합니다.
 
+void SInsert(List *plist, LData data); //comp에 등록된 정렬기준을 근거로 데이터를 저장하는 SInsert 함수
 
 
 #endif /* basic_linked_list_hpp */
