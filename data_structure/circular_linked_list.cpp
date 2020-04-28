@@ -28,7 +28,41 @@ bool LFirst(List *plist, Data *pdata){
         return false;
     }
     else{
-        *pdata = plist->tail->next->data;
+        plist->before = plist->tail;
+        plist->cur = plist->tail->next;
+        *pdata = plist->cur->data;
         return true;
     }
+}
+
+bool LNext(List *plist, Data *pdata){
+    if(plist->tail == NULL){
+        return false;
+    }
+    plist->before = plist->cur;
+    plist->cur = plist->cur->next;
+    
+    *pdata = plist->cur->data;
+    return true;
+}
+
+Data LRemove(List *plist){
+    Node *rpos = plist->cur;
+    Data rdata = rpos->data;
+    
+    if(rpos == plist->tail){
+        if(plist->tail->next == plist->tail){
+            plist->tail = NULL;
+        }
+        else{
+            plist->tail = plist->before;
+        }
+    }
+    
+    plist->before->next = plist->cur->next;
+    plist->cur = plist->before;
+    
+    free(rpos);
+    (plist->numOfData)--;
+    return rdata;
 }
