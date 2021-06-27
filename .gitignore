@@ -33,3 +33,7 @@
 
 #ds store
 .DS_Store
+
+#intellij
+.idea/
+algorithm.iml
